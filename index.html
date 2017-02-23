@@ -6,9 +6,8 @@
     <title>Słowo na dziś</title>
     
     <script type="text/javascript"> 
-        function generator(){
-            
-            var wordlist = {
+        function generator() {
+            var wordmap = {
                 "2017.02.23": "mitręga",
                 "2017.02.22": "karbunkuł",
                 "2017.02.21": "siurpryza",
@@ -34,38 +33,37 @@
                 "2016.12.13": "ekspulsja"
             }
             
-            var name = wordlist[dateToYMD(new Date())];
-            if (name == null) {
-                name = "Poczekaj, słowo na dziś nie zostało jeszcze wylosowane."
+            var word = wordmap[formatDate(new Date())];
+
+            if (word == null) {
+                word = "Poczekaj, słowo na dziś nie zostało jeszcze wylosowane."
                 var element = document.createElement("div");
                 element.setAttribute("id", "no-word");
-                element.appendChild(document.createTextNode(name));
+                element.appendChild(document.createTextNode(word));
                 document.getElementById("placeholder").appendChild(element);
-            }
-            else {
+            } else {
                 var element = document.createElement("a");
-                element.setAttribute("href", "http://sjp.pl/" + name);
-                element.appendChild(document.createTextNode(name));
+                element.setAttribute("href", "http://sjp.pl/" + word);
+                element.appendChild(document.createTextNode(word));
                 document.getElementById("placeholder").appendChild(element);
             }
-            for (var k in wordlist){
-                if (wordlist.hasOwnProperty(k)) {
-                    // alert("Key is " + k + ", value is" + wordlist[k]);
+
+            for (var date in wordmap) {
+                if (wordmap.hasOwnProperty(date)) {
                     var linkwrapper = document.createElement("div");
-                    linkwrapper.setAttribute("id", "wrapping-div-"+k);
-                    linkwrapper.appendChild(document.createTextNode(k + ": "));
+                    linkwrapper.setAttribute("id", "wrapping-div-" + date);
+                    linkwrapper.appendChild(document.createTextNode(date + ": "));
                     document.getElementById("archiwum").appendChild(linkwrapper);
                     
                     var slowniklink = document.createElement("a");
-                    slowniklink.setAttribute("href", "http://sjp.pl/" + wordlist[k]);
-                    slowniklink.appendChild(document.createTextNode(wordlist[k]));
-                    document.getElementById("wrapping-div-" + k).appendChild(slowniklink);
+                    slowniklink.setAttribute("href", "http://sjp.pl/" + wordmap[date]);
+                    slowniklink.appendChild(document.createTextNode(wordmap[date]));
+                    document.getElementById("wrapping-div-" + date).appendChild(slowniklink);
                 }
             };
-
-
         }       
-        function dateToYMD(date) {
+
+        function formatDate(date) {
             var d = date.getDate();
             var m = date.getMonth() + 1;
             var y = date.getFullYear();
@@ -74,9 +72,9 @@
     </script>
     
     <style type="text/css">
-        body{font-family: arial, serif;}
-        #wrapper{border-left:1px solid #cccccc;border-right:1px solid #cccccc;margin:0 auto;padding: 0 20px;width: 700px}
-        #generator{background:#e9f3f6;border:1px solid #cccccc;margin:30px 0;font-size:28px;font-weight:bold;padding:20px 0 20px;text-align:center;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
+        body {font-family: arial, serif;}
+        #wrapper {border-left:1px solid #cccccc;border-right:1px solid #cccccc;margin:0 auto;padding: 0 20px;width: 700px}
+        #generator {background:#e9f3f6;border:1px solid #cccccc;margin:30px 0;font-size:28px;font-weight:bold;padding:20px 0 20px;text-align:center;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
         #generator input{font-size:16px;font-weight:normal;margin-top: 30px}
         #footer {font-size: 10px; color: #999; margin: 30px 0 0 0;}
         #footer a{color:#999}
@@ -84,11 +82,10 @@
 		a:link, a:visited { color: #265C83; }
 		a:hover { color: #7FDBFF; }
 		a:active {transition: color .3s; color: #007BE6;}
-		.link { text-decoration: none; }
+		a:link { text-decoration: none; }
     </style>
-    
-    
 </head>
+
 <body onload="generator()">
     <div id="wrapper">
         <h1>Słowo na dziś</h1>
@@ -99,14 +96,12 @@
         </div>
         
         <h3>Archiwum słów:</h3>
-        
         <div id="archiwum" >
-
         </div>
 
         <div id="footer">
-        <p>Luźno wzorowane na bazie <a href="http://online-generator.com">online-generator.com</a>, nie umiem into dżawaskrypt
-        </p>
+	        <p>Luźno wzorowane na bazie <a href="http://online-generator.com">online-generator.com</a>, nie umiem into dżawaskrypt
+	        </p>
         </div>
     </div>
 </body>
