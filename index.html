@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">	
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Słowo na dziś</title>
+	
+	<script type="text/javascript">	
+		function generator(){
+			
+			var wordlist = {
+			    "2017.02.23": "mitręga",
+			    "2017.02.22": "karbunkuł",
+			    "2017.02.21": "siurpryza",
+			    "2017.02.17": "lingwafon",
+			    "2017.02.16": "metrampraż",
+			    "2017.02.15": "prymariusz",
+			    "2017.02.14": "kremplina",
+			    "2017.02.09": "panoptikum",
+			    "2017.02.08": "elukubracja",
+			    "2017.02.07": "renkloda",
+			    "2017.02.03": "soldateska",
+			    "2017.02.02": "grążela",
+			    "2017.02.01": "wodewil",
+			    "2017.01.31": "piestrzenica",
+			    "2017.01.27": "streptomycyna",
+			    "2017.01.26": "korpulentny",
+			    "2017.01.25": "rosochaty",
+			    "2016.12.24": "kongruentny",
+			    "2016.12.20": "prymicja",
+			    "2016.12.19": "kukuruźnik",
+			    "2016.12.18": "hekatomba",
+			    "2016.12.17": "memorandum",
+			    "2016.12.13": "ekspulsja"
+			}
+			
+			// Random numbers are made 
+			var randomNumber1 = parseInt(Math.random() * wordlist.length);
+			// var name = wordlist1[randomNumber1];
+			var name = wordlist[dateToYMD(new Date())];
+			if (name == null)
+				name = "Poczekaj, Marcin jeszcze nie wylosował słowa."
+			
+			//If there's already a name it is removed  
+			if(document.getElementById("result")){
+				document.getElementById("placeholder").removeChild(document.getElementById("result"));
+			}
+			// A div element is created to show the generated name. The Name is added as a textnode. Textnode is added to the placeholder.
+			var element = document.createElement("div");
+			element.setAttribute("id", "result");
+			element.appendChild(document.createTextNode(name));
+			document.getElementById("placeholder").appendChild(element);
+
+			for (var k in wordlist){
+			    if (wordlist.hasOwnProperty(k)) {
+			         // alert("Key is " + k + ", value is" + wordlist[k]);
+					var element2 = document.createElement("div");
+					element2.setAttribute("id", "stare");
+					element2.appendChild(document.createTextNode(k + ": " + wordlist[k]));
+					document.getElementById("archiwum").appendChild(element2);
+			    }
+			};
+
+
+		}		
+		function dateToYMD(date) {
+		    var d = date.getDate();
+		    var m = date.getMonth() + 1;
+		    var y = date.getFullYear();
+		    return '' + y + '.' + (m<=9 ? '0' + m : m) + '.' + (d <= 9 ? '0' + d : d);
+		}
+	</script>
+	
+	<style type="text/css">
+		body{font-family: arial, serif;}
+		#wrapper{border-left:1px solid #cccccc;border-right:1px solid #cccccc;margin:0 auto;padding: 0 20px;width: 700px}
+		#generator{background:#e9f3f6;border:1px solid #cccccc;margin:30px 0;font-size:28px;font-weight:bold;padding:50px 0 20px;text-align:center;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
+		#generator input{font-size:16px;font-weight:normal;margin-top: 30px}
+		#footer{font-size: 10px; color: #999; margin: 30px 0 0 0;}
+		#footer a{color:#999}
+	</style>
+	
+	
+</head>
+<body onload="generator()">
+	<div id="wrapper">
+		<h1>Słowo na dziś</h1>
+		<p>Elektroniczna wersja listy "słów na dziś"</p>
+		
+		<div id="generator" >
+			<div id="placeholder"></div>
+		</div>
+		
+		<h3>Archiwum słów:</h3>
+		
+		<div id="archiwum" >
+
+		</div>
+
+		<div id="footer">
+		<p>Luźno wzorowane na bazie <a href="http://online-generator.com">online-generator.com</a>, nie umiem into dżawaskrypt
+		</p>
+		</div>
+	</div>
+</body>
+</html>
