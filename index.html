@@ -4,101 +4,22 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Słowo na dziś</title>
-    
-    <script type="text/javascript"> 
-        function generator() {
-            var wordmap = {
-                "2017.02.28": "hołubiec",
-                "2017.02.24": "ćwik",
-                "2017.02.23": "mitręga",
-                "2017.02.22": "karbunkuł",
-                "2017.02.21": "siurpryza",
-                "2017.02.17": "lingwafon",
-                "2017.02.16": "metrampaż",
-                "2017.02.15": "prymariusz",
-                "2017.02.14": "kremplina",
-                "2017.02.09": "panoptikum",
-                "2017.02.08": "elukubracja",
-                "2017.02.07": "renkloda",
-                "2017.02.03": "soldateska",
-                "2017.02.02": "grążela",
-                "2017.02.01": "wodewil",
-                "2017.01.31": "piestrzenica",
-                "2017.01.27": "streptomycyna",
-                "2017.01.26": "korpulentny",
-                "2017.01.25": "rosochaty",
-                "2016.12.24": "kongruentny",
-                "2016.12.20": "prymicja",
-                "2016.12.19": "kukuruźnik",
-                "2016.12.18": "hekatomba",
-                "2016.12.17": "memorandum",
-                "2016.12.13": "ekspulsja"
-            }
-            
-            var word = wordmap[formatDate(new Date())];
-
-            if (word == null) {
-                word = "Poczekaj, słowo na dziś nie zostało jeszcze wylosowane."
-                var element = document.createElement("div");
-                element.setAttribute("id", "no-word");
-                element.appendChild(document.createTextNode(word));
-                document.getElementById("placeholder").appendChild(element);
-            } else {
-                var element = document.createElement("a");
-                element.setAttribute("href", "http://sjp.pl/" + word);
-                element.appendChild(document.createTextNode(word));
-                document.getElementById("placeholder").appendChild(element);
-            }
-
-            for (var date in wordmap) {
-                if (wordmap.hasOwnProperty(date)) {
-                    var linkwrapper = document.createElement("div");
-                    linkwrapper.setAttribute("id", "wrapping-div-" + date);
-                    linkwrapper.appendChild(document.createTextNode(date + ": "));
-                    document.getElementById("archiwum").appendChild(linkwrapper);
-                    
-                    var slowniklink = document.createElement("a");
-                    slowniklink.setAttribute("href", "http://sjp.pl/" + wordmap[date]);
-                    slowniklink.appendChild(document.createTextNode(wordmap[date]));
-                    document.getElementById("wrapping-div-" + date).appendChild(slowniklink);
-                }
-            };
-        }       
-
-        function formatDate(date) {
-            var d = date.getDate();
-            var m = date.getMonth() + 1;
-            var y = date.getFullYear();
-            return '' + y + '.' + (m<=9 ? '0' + m : m) + '.' + (d <= 9 ? '0' + d : d);
-        }
-    </script>
-    
-    <style type="text/css">
-        body {font-family: arial, serif;}
-        #wrapper {border-left:1px solid #cccccc;border-right:1px solid #cccccc;margin:0 auto;padding: 0 20px;width: 700px}
-        #generator {background:#e9f3f6;border:1px solid #cccccc;margin:30px 0;font-size:28px;font-weight:bold;padding:20px 0 20px;text-align:center;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
-        #generator input{font-size:16px;font-weight:normal;margin-top: 30px}
-        #footer {font-size: 10px; color: #999; margin: 30px 0 0 0;}
-        #footer a{color:#999}
-        a {transition: color .4s; color: #265C83;}
-		a:link, a:visited { color: #265C83; }
-		a:hover { color: #7FDBFF; }
-		a:active {transition: color .3s; color: #007BE6;}
-		a:link { text-decoration: none; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="generator.js"></script>
 </head>
 
-<body onload="generator()">
+<body onload="getWord()">
     <div id="wrapper">
         <h1>Słowo na dziś</h1>
         <p>Elektroniczna wersja listy "słów na dziś"</p>
         
-        <div id="generator" >
+        <div id="generator">
             <div id="placeholder"></div>
         </div>
         
         <h3>Archiwum słów:</h3>
-        <div id="archiwum" >
+        <div id="archiwum">
         </div>
 
         <div id="footer">
