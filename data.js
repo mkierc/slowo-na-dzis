@@ -1,4 +1,5 @@
 wordmap = {
+    "2017.03.09": "diapozytyw",
     "2017.03.08": "gliwieć",
     "2017.03.07": "wermiszel",
     "2017.03.02": "barchan",
