@@ -1,5 +1,5 @@
 wordmap = {
-    "2019.02.06": "trybularz"
+    "2019.02.06": "trybularz",
     "2017.04.07": "jubel",
     "2017.03.28": "eschatologia",
     "2017.03.23": "bateldres",
