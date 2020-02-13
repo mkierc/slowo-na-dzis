@@ -1,4 +1,5 @@
 wordmap = {
+    "2020.02.13": "żminda",
     "2020.02.11": "sykatywa",
     "2020.02.10": "indolencja",
     "2020.02.06": "trybularz",
